@@ -1,5 +1,6 @@
 import pickle
 import random
+from normalize import normalize_data
 import numpy as np
 
 
@@ -15,6 +16,7 @@ def load_centralized_data(hot_vector):
         labelClass = labelClasses[x]
         with open('bw_' + label + '_images', 'rb') as f:
             data = pickle.load(f)
+            data = normalize_data(data)
         if hot_vector:
             for y in range(len(data)):
                 # add hot vectors to the images
@@ -58,6 +60,7 @@ def load_airplane_data(hot_vector):
         labelClass = labelClasses[x]
         with open('bw_' + label + '_images', 'rb') as f:
             data = pickle.load(f)
+            data = normalize_data(data)
         if hot_vector:
             for y in range(len(data)):
                 # add hot vectors to the images
@@ -100,6 +103,7 @@ def load_cat_data(hot_vector):
         labelClass = labelClasses[x]
         with open('bw_' + label + '_images', 'rb') as f:
             data = pickle.load(f)
+            data = normalize_data(data)
         if hot_vector:
             for y in range(len(data)):
                 # add hot vectors to the images
