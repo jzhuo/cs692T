@@ -117,7 +117,7 @@ if __name__ == "__main__":
     grid = [512, 1024, 1536, 2048]
 
     # define hyperparameters for fitting models
-    numEpochs = 250
+    numEpochs = 300
     batchSize = 10
     verbosity = 1
 
