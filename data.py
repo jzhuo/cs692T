@@ -103,9 +103,7 @@ def load_cat_data(hot_vector):
         labelClass = labelClasses[x]
         with open('bw_' + label + '_images', 'rb') as f:
             data = pickle.load(f)
-            print(data)
             data = normalize_data(data)
-            print(data)
         if hot_vector:
             for y in range(len(data)):
                 # add hot vectors to the images
