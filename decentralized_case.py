@@ -91,11 +91,11 @@ def combine_models(stepNum, hot_vector_status):
 
     # load models
     if hot_vector_status:
-        airplane_model = load_model('decentralized_airplane_model_'+stepNum+'_yesVector')
-        cat_model = load_model('decentralized_cat_model_'+stepNum+'_yesVector')
+        airplane_model = load_model('decentralized_airplane_model_'+str(stepNum)+'_yesVector')
+        cat_model = load_model('decentralized_cat_model_'+str(stepNum)+'_yesVector')
     else:
-        airplane_model = load_model('decentralized_airplane_model_'+stepNum+'_noVector')
-        cat_model = load_model('decentralized_cat_model_'+stepNum+'_noVector')
+        airplane_model = load_model('decentralized_airplane_model_'+str(stepNum)+'_noVector')
+        cat_model = load_model('decentralized_cat_model_'+str(stepNum)+'_noVector')
 
     # comine models by averaging their weights
     airplane_weights = np.array(airplane_model.get_weights())
@@ -106,9 +106,9 @@ def combine_models(stepNum, hot_vector_status):
     airplane_model.set_weights(combined_weights)
     # save best model to file
     if hot_vector_status:
-        airplane_model.save('combined_model_'+stepNum+'_yesVector')
+        airplane_model.save('combined_model_'+str(stepNum)+'_yesVector')
     else:
-        airplane_model.save('combined_model_'+stepNum+'_noVector')
+        airplane_model.save('combined_model_'+str(stepNum)+'_noVector')
 
     return
 
@@ -121,18 +121,18 @@ def run_airplane_case_2(stepNum, numEpochs, batchSize, verbosity, hot_vector_sta
 
     # build best model and fit on data
     if hot_vector_status:
-        model = load_model('combined_model_'+stepNum+'_yesVector')
+        model = load_model('combined_model_'+str(stepNum)+'_yesVector')
     else:
-        model = load_model('combined_model_'+stepNum+'_noVector')
+        model = load_model('combined_model_'+str(stepNum)+'_noVector')
 
     # fit the model on the training data
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
     # save best model to file
     if hot_vector_status:
-        model.save('decentralized_airplane_model_'+(stepNum+1)+'_yesVector')
+        model.save('decentralized_airplane_model_'+str(stepNum+1)+'_yesVector')
     else:
-        model.save('decentralized_airplane_model_'+(stepNum+1)+'_noVector')
+        model.save('decentralized_airplane_model_'+str(stepNum+1)+'_noVector')
 
     return
 
@@ -145,18 +145,18 @@ def run_cat_case_2(stepNum, grid, numEpochs, batchSize, verbosity, hot_vector_st
 
     # build best model and fit on data
     if hot_vector_status:
-        model = load_model('combined_model_'+stepNum+'_yesVector')
+        model = load_model('combined_model_'+str(stepNum)+'_yesVector')
     else:
-        model = load_model('combined_model_'+stepNum+'_noVector')
+        model = load_model('combined_model_'+str(stepNum)+'_noVector')
 
     # fit the model on the training data
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
     # save best model to file
     if hot_vector_status:
-        model.save('decentralized_cat_model_'+(stepNum+1)+'_yesVector')
+        model.save('decentralized_cat_model_'+str(stepNum+1)+'_yesVector')
     else:
-        model.save('decentralized_cat_model_'+(stepNum+1)+'_noVector')
+        model.save('decentralized_cat_model_'+str(stepNum+1)+'_noVector')
 
     return
 
@@ -164,12 +164,10 @@ def run_cat_case_2(stepNum, grid, numEpochs, batchSize, verbosity, hot_vector_st
 if __name__ == "__main__":
 
     # define grid
-    # grid = [512, 1024, 1536, 2048]
-    grid = [3,7]
+    grid = [512, 1024, 1536, 2048]
 
     # define hyperparameters for fitting models
-    # numEpochs = 300
-    numEpochs = 1
+    numEpochs = 300
     batchSize = 10
     verbosity = 1
 
