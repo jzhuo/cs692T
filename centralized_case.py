@@ -130,6 +130,7 @@ if __name__ == "__main__":
 
     # build best model and fit on data
     model = build_model(best_model_size)
+    
     # fit the model on the training data
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
