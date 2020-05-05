@@ -121,42 +121,42 @@ def run_airplane_case_2(stepNum, numEpochs, batchSize, verbosity, hot_vector_sta
 
     # build best model and fit on data
     if hot_vector_status:
-        model = load_model('combined_model_1_yesVector')
+        model = load_model('combined_model_'+stepNum+'_yesVector')
     else:
-        model = load_model('combined_model_1_noVector')
+        model = load_model('combined_model_'+stepNum+'_noVector')
 
     # fit the model on the training data
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
     # save best model to file
     if hot_vector_status:
-        model.save('decentralized_airplane_model_2_yesVector')
+        model.save('decentralized_airplane_model_'+(stepNum+1)+'_yesVector')
     else:
-        model.save('decentralized_airplane_model_2_noVector')
+        model.save('decentralized_airplane_model_'+(stepNum+1)+'_noVector')
 
     return
 
 
 # run decentralized case part 2 for cats
-def run_cat_case_2(grid, numEpochs, batchSize, verbosity, hot_vector_status):
+def run_cat_case_2(stepNum, grid, numEpochs, batchSize, verbosity, hot_vector_status):
     
     # load data
     x_train, y_train, x_test, y_test = load_cat_data(hot_vector_status)
 
     # build best model and fit on data
     if hot_vector_status:
-        model = load_model('combined_model_1_yesVector')
+        model = load_model('combined_model_'+stepNum+'_yesVector')
     else:
-        model = load_model('combined_model_1_noVector')
+        model = load_model('combined_model_'+stepNum+'_noVector')
 
     # fit the model on the training data
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
     # save best model to file
     if hot_vector_status:
-        model.save('decentralized_cat_model_2_yesVector')
+        model.save('decentralized_cat_model_'+(stepNum+1)+'_yesVector')
     else:
-        model.save('decentralized_cat_model_2_noVector')
+        model.save('decentralized_cat_model_'+(stepNum+1)+'_noVector')
 
     return
 
@@ -188,11 +188,11 @@ if __name__ == "__main__":
     run_cat_case_2(numEpochs, batchSize, verbosity, hot_vector_status)
 
     # combine models for a second time
-    combine_part_2(hot_vector_status)
+    combine_models(2, hot_vector_status)
 
     # run part 3
-    run_airplane_case_part_3(numEpochs, batchSize, verbosity, hot_vector_status)
-    run_cat_case_part_3(numEpochs, batchSize, verbosity, hot_vector_status)
+    run_airplane_case_2(numEpochs, batchSize, verbosity, hot_vector_status)
+    run_cat_case_2(numEpochs, batchSize, verbosity, hot_vector_status)
 
     # combine models for a third time
-    combine_part_3(hot_vector_status)
+    combine_models(3, hot_vector_status)
