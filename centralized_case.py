@@ -117,7 +117,7 @@ if __name__ == "__main__":
     grid = [512, 1024, 1536, 2048]
 
     # define hyperparameters for fitting models
-    numEpochs = 300
+    numEpochs = 250
     batchSize = 10
     verbosity = 1
 
@@ -134,4 +134,7 @@ if __name__ == "__main__":
     model.fit(x_train, y_train, epochs=numEpochs, batch_size=batchSize, verbose=verbosity)
 
     # save best model to file
-    model.save('centralized_model')
+    if hot_vector_status:
+        model.save('centralized_model_yesVector')
+    else:
+        model.save('centralized_model_noVector')
