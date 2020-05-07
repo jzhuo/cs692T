@@ -49,7 +49,7 @@ def load_centralized_data(hot_vector):
     random.shuffle(b) 
     x_test, y_test = zip(*b) 
 
-    return np.array([x_train]), np.array([y_train]), np.array([x_test]), np.array([y_test])
+    return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
 
 def load_airplane_data(hot_vector):
@@ -76,7 +76,7 @@ def load_airplane_data(hot_vector):
     random.shuffle(b) 
     x_test, y_test = zip(*b) 
 
-    return np.array([x_train]), np.array([y_train]), np.array([x_test]), np.array([y_test])
+    return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
 
 def load_cat_data(hot_vector):
@@ -103,7 +103,7 @@ def load_cat_data(hot_vector):
     random.shuffle(b) 
     x_test, y_test = zip(*b) 
 
-    return np.array([x_train]), np.array([y_train]), np.array([x_test]), np.array([y_test])
+    return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
 
 
 if __name__ == "__main__":

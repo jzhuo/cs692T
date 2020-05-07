@@ -13,7 +13,8 @@ def run_airplane_case_1(grid, numEpochs, batchSize, verbosity, hot_vector_status
     x_train, y_train, x_test, y_test = load_airplane_data(hot_vector_status)
 
     # find best model size with gridsearch
-    best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    # best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    best_model_size = 512
 
     # build best model and fit on data
     model = build_model(best_model_size)
@@ -36,7 +37,8 @@ def run_cat_case_1(grid, numEpochs, batchSize, verbosity, hot_vector_status):
     x_train, y_train, x_test, y_test = load_cat_data(hot_vector_status)
 
     # find best model size with gridsearch
-    best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    # best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    best_model_size = 512
 
     # build best model and fit on data
     model = build_model(best_model_size)

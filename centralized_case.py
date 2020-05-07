@@ -126,7 +126,8 @@ if __name__ == "__main__":
     x_train, y_train, x_test, y_test = load_centralized_data(hot_vector_status)
 
     # find best model size with gridsearch
-    best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    # best_model_size = gridsearch(x_train, y_train, grid, numEpochs, batchSize, verbosity)
+    best_model_size = 2048
 
     # build best model and fit on data
     model = build_model(best_model_size)
