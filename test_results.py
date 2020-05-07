@@ -32,22 +32,22 @@ if __name__ == "__main__":
     # ************************************************************************
 
     a_x_train, a_y_train, a_x_test, a_y_test = load_airplane_data(False)
-    c_x_train, x_y_train, c_x_test, x_y_test = load_cat_data(False)
+    c_x_train, c_y_train, c_x_test, c_y_test = load_cat_data(False)
 
     combinedModel1 = load_model('combined_model_1_noVector')
     combinedModel2 = load_model('combined_model_2_noVector')
     combinedModel3 = load_model('combined_model_3_noVector')
 
     a1_pred = combinedModel1.predict(a_x_test)
-    c1_pred = combinedModel1.predit(c_x_test)
+    c1_pred = combinedModel1.predict(c_x_test)
 
     a2_pred = combinedModel2.predict(a_x_test)
-    c2_pred = combinedModel2.predit(c_x_test)
+    c2_pred = combinedModel2.predict(c_x_test)
 
     a3_pred = combinedModel3.predict(a_x_test)
-    c3_pred = combinedModel3.predit(c_x_test)
+    c3_pred = combinedModel3.predict(c_x_test)
 
-    a1_sum, c1_sum, a2_sum, c2_sum, a3_sum, c3_sum = 0, 0, 0, 0, 0, 
+    a1_sum, c1_sum, a2_sum, c2_sum, a3_sum, c3_sum = 0, 0, 0, 0, 0, 0
     
     for index in range(len(a1_pred)):
 
@@ -68,21 +68,21 @@ if __name__ == "__main__":
     combined2_acc = (a2_acc + c2_acc)/2
     combined3_acc = (a3_acc + c3_acc)/2
 
-    print('\n\n ******************************************')
+    print('\n\n******************************************')
     print('Decentralized Combined Model 1 Results\n')
     print('airplane accuracy:', a1_acc)
     print('cat accuracy:', c1_acc)
     print('combined accuracy:', combined1_acc)
     print('******************************************\n')
 
-    print('\n\n ******************************************')
+    print('\n\n******************************************')
     print('Decentralized Combined Model 2 Results\n')
     print('airplane accuracy:', a2_acc)
     print('cat accuracy:', c2_acc)
     print('combined accuracy:', combined2_acc)
     print('******************************************\n')
 
-    print('\n\n ******************************************')
+    print('\n\n******************************************')
     print('Decentralized Combined Model 3 Results\n')
     print('airplane accuracy:', a3_acc)
     print('cat accuracy:', c3_acc)
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     centralized_combined_acc = (centralized_airplane_acc + centralized_cat_acc)/2
 
 
-    print('\n\n ******************************************')
+    print('\n\n******************************************')
     print('Centralized Model Results\n')
     print('airplane accuracy:', centralized_airplane_acc)
     print('cat accuracy:', centralized_cat_acc)
